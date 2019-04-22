@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <img alt="Vue logo" src="./assets/logo.png">
     <router-link to="/">Home</router-link>
     <router-link to="/youpi">Youpi</router-link>
     <router-view/>
@@ -8,9 +8,12 @@
 </template>
 
 <script>
+import store from "./store";
+
 export default {
-  name: 'App'
-}
+  name: "app",
+  store
+};
 </script>
 
 <style>

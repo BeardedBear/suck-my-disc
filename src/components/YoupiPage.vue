@@ -1,26 +1,32 @@
 <template>
-  <div class="Youtpi">
-    <h1>{{ msg }}</h1>
-    <p>youpi</p>
+  <div class="hello">
+    <h1>youpi</h1>
+    <p>{{ get_count }}</p>
+    <button @click="act_multiplier()">Multiplier</button>
   </div>
 </template>
 
 <script>
+import Vuex from "vuex";
+
 export default {
-  name: 'YoupiPage',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+  name: "YoupiPage",
+  props: {
+    msg: { type: String, default: "non" }
+  },
+  methods: {
+    ...Vuex.mapActions(["act_multiplier"])
+  },
+  computed: {
+    ...Vuex.mapGetters(["get_count"])
   }
-}
-</script>
+};
+</script> 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
+h3 {
+  margin: 40px 0 0;
 }
 ul {
   list-style-type: none;
