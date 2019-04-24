@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>{{ get_count }}</p>
+    <p>{{ get_auth.nickname }}, {{ get_auth.email }}</p>
     <button @click="act_multiplier()">Multiplier</button>
     <button @click="getGreetings()">Login</button>
   </div>
@@ -9,7 +10,6 @@
 
 <script>
 import Vuex from "vuex";
-// import { HTTP } from "../api";
 
 export default {
   name: "HelloWorld",
@@ -17,26 +17,7 @@ export default {
     msg: { type: String, default: "non" }
   },
   methods: {
-    ...Vuex.mapActions(["act_multiplier"]),
-    // getGreetings: function() {
-    //   HTTP.post("/api/v4/users/login", {
-    //     login_id: "g.poirrier@allo-media.fr",
-    //     password: "1RUT%6!8JHL*$q1Roa4&7dRX"
-    //   })
-    //     .then(response => {
-    //       this.greetings = response.message;
-    //     })
-    //     .catch(e => {
-    //       this.errors = e;
-    //     });
-    // },
-
-    // "POST" "/api/v4/users/login HTTP/1.1"
-    // "Host": "chat.allo-media.net"
-    // "Accept": "*"
-    // "User-Agent": "Mozilla/5.0 (compatible; Rigor/1.0.0; http://rigor.com)"
-    // "Content-Length": "77"
-    // Content-Type: application/x-www-form-urlencoded
+    ...Vuex.mapActions(["act_multiplier", "act_login"]),
 
     getGreetings: function() {
       fetch("https://chat.allo-media.net/api/v4/users/login", {
@@ -47,7 +28,14 @@ export default {
         })
       })
         .then(response => {
-          this.greetings = response.message;
+          if (response.ok) {
+            // this.act_login(response);
+            /* eslint-disable no-console */
+            response.json().then(res => {
+              this.act_login(res);
+            });
+            /* eslint-enable no-console */
+          }
         })
         .catch(e => {
           this.errors = e;
@@ -55,7 +43,7 @@ export default {
     }
   },
   computed: {
-    ...Vuex.mapGetters(["get_count"])
+    ...Vuex.mapGetters(["get_count", "get_auth"])
   }
 };
 </script> 
