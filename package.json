@@ -1,13 +1,14 @@
 {
-  "name": "my-project",
+  "name": "vue-learning",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "vue-cli-service serve",
+    "start": "vue-cli-service serve --modern",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",

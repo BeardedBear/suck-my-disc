@@ -1,4 +1,4 @@
-# my-project
+# Vue Learning
 
 ## Project setup
 
