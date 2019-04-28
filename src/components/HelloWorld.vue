@@ -1,12 +1,37 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <ul v-if="get_data.sputnik">
-      <li v-for="item in get_data.sputnik" :key="item.id" :class="{readed: isReaded(item.id)}">
-        <span>{{ item.note + " - " + item.artist + " - " + item.album + " - " + item.releaseDate}}</span>
-        <button @click="readed(item.id)">OK</button>
-      </li>
-    </ul>
+    <table v-if="get_data.sputnik">
+      <tr v-for="item in get_data.sputnik" :key="item.id" :class="{readed: isReaded(item.id)}">
+        <td>
+          <button @click="readed(item.id)">OK</button>
+        </td>
+        <td>{{item.note}}</td>
+        <td>{{item.artist}}</td>
+        <td>{{item.album}}</td>
+        <td>{{item.releaseDate}}</td>
+        <td>
+          <a
+            target="_BLANK"
+            :href="'https://www.sputnikmusic.com/search_results.php?genreid=0&amp;search_in=Bands&amp;search_text=' + item.artist"
+          >Sputnik</a>
+        </td>
+        <td>
+          <a target="_BLANK" :href="'https://fr.wikipedia.org/wiki/' + item.artist">Wiki</a>
+        </td>
+        <td>
+          <a
+            target="_BLANK"
+            :href="'https://rateyourmusic.com/artist/' + item.artist.toLowerCase().replace(' ', '-')"
+          >RYM -</a>
+        </td>
+        <td>
+          <a
+            target="_BLANK"
+            :href="'https://rateyourmusic.com/artist/' + item.artist.toLowerCase().replace(' ', '_')"
+          >RYM _</a>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -73,13 +98,18 @@ export default {
 };
 </script> 
 
+
+
 <style lang="scss" scoped>
+tr {
+  border-bottom: 1px solid black;
+}
 h3 {
   margin: 40px 0 0;
 }
 
 .readed {
-  background: rgb(128, 128, 128);
+  opacity: 0.2;
 }
 
 ul {
