@@ -52,36 +52,10 @@ export default {
           });
         }
       });
-    },
-
-    getGreetings() {
-      fetch("https://chat.allo-media.net/api/v4/users/login", {
-        method: "post",
-        body: JSON.stringify({
-          login_id: "g.poirrier@allo-media.fr",
-          password: "l$8&Bruyw89CGju6RGe2EOfa"
-        })
-      })
-        .then(response => {
-          if (response.ok) {
-            /* eslint-disable no-console */
-            response.json().then(res => {
-              this.act_login(res);
-            });
-            // console.log(response);
-            // console.log("this", this);
-
-            // console.log(response.headers.get("content-length"));
-            /* eslint-enable no-console */
-          }
-        })
-        .catch(e => {
-          this.errors = e;
-        });
     }
   },
   computed: {
-    ...Vuex.mapGetters(["get_count", "get_auth", "get_data"])
+    ...Vuex.mapGetters(["get_data"])
   }
 };
 </script> 
