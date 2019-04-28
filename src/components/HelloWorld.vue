@@ -5,6 +5,15 @@
     <p>{{ get_auth.nickname }}, {{ get_auth.email }}</p>
     <button @click="act_multiplier()">Multiplier</button>
     <button @click="getGreetings()">Login</button>
+    <button @click="getSputnik()">Sputnik</button>
+
+    <ul v-if="get_data.sputnik">
+      <li
+        style="display:block;"
+        v-for="item in get_data.sputnik"
+        :key="item.id"
+      >{{ item.note + " - " + item.artist + " - " + item.album + " - " + item.releaseDate}}</li>
+    </ul>
   </div>
 </template>
 
@@ -16,24 +25,45 @@ export default {
   props: {
     msg: { type: String, default: "non" }
   },
+  mounted() {
+    this.getSputnik();
+  },
   methods: {
-    ...Vuex.mapActions(["act_multiplier", "act_login"]),
+    ...Vuex.mapActions(["act_multiplier", "act_login", "act_dataSputnik"]),
 
-    getGreetings: function() {
+    getSputnik() {
+      fetch(
+        "https://api.apify.com/v2/acts/apify~web-scraper/runs/last/dataset/items?token=FJP765r6HtGXjJXYC9cmjnCco",
+        {
+          method: "get"
+        }
+      ).then(response => {
+        if (response.ok) {
+          response.json().then(res => {
+            this.act_dataSputnik(res);
+          });
+        }
+      });
+    },
+
+    getGreetings() {
       fetch("https://chat.allo-media.net/api/v4/users/login", {
         method: "post",
         body: JSON.stringify({
           login_id: "g.poirrier@allo-media.fr",
-          password: "1RUT%6!8JHL*$q1Roa4&7dRX"
+          password: "l$8&Bruyw89CGju6RGe2EOfa"
         })
       })
         .then(response => {
           if (response.ok) {
-            // this.act_login(response);
             /* eslint-disable no-console */
             response.json().then(res => {
               this.act_login(res);
             });
+            // console.log(response);
+            // console.log("this", this);
+
+            // console.log(response.headers.get("content-length"));
             /* eslint-enable no-console */
           }
         })
@@ -43,7 +73,7 @@ export default {
     }
   },
   computed: {
-    ...Vuex.mapGetters(["get_count", "get_auth"])
+    ...Vuex.mapGetters(["get_count", "get_auth", "get_data"])
   }
 };
 </script> 

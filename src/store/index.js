@@ -9,6 +9,9 @@ const state = {
   auth: {
     nickname: "",
     email: ""
+  },
+  data: {
+    sputnik: []
   }
 };
 
@@ -19,6 +22,9 @@ const mutations = {
   mut_login: (state, { nickname, email }) => {
     state.auth.nickname = nickname;
     state.auth.email = email;
+  },
+  mut_dataSputnik: (state, data) => {
+    state.data.sputnik = data;
   }
 };
 
@@ -28,6 +34,9 @@ const getters = {
   },
   get_auth: state => {
     return state.auth;
+  },
+  get_data: state => {
+    return state.data;
   }
 };
 
@@ -37,6 +46,9 @@ const actions = {
   },
   act_login: (store, { nickname, email }) => {
     store.commit("mut_login", { nickname, email });
+  },
+  act_dataSputnik: (store, data) => {
+    store.commit("mut_dataSputnik", data);
   }
 };
 
