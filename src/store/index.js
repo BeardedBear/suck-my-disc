@@ -6,24 +6,34 @@ Vue.use(Vuex);
 const state = {
   data: {
     sputnik: []
-  }
+  },
+  storage: ""
 };
 
 const mutations = {
   mut_dataSputnik: (state, data) => {
     state.data.sputnik = data;
+  },
+  mut_storage: (state, data) => {
+    state.storage = data;
   }
 };
 
 const getters = {
   get_data: state => {
     return state.data;
+  },
+  get_storage: state => {
+    return state.storage;
   }
 };
 
 const actions = {
   act_dataSputnik: (store, data) => {
     store.commit("mut_dataSputnik", data);
+  },
+  act_storage: (store, data) => {
+    store.commit("mut_storage", data);
   }
 };
 

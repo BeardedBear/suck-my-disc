@@ -15,27 +15,39 @@ import Vuex from "vuex";
 
 export default {
   name: "HelloWorld",
+
   props: {
     msg: { type: String, default: "non" }
   },
+
   mounted() {
-    this.getSputnik();
-    if (JSON.parse(localStorage.getItem("readed")) === null) {
-      localStorage.setItem("readed", JSON.stringify([]));
+    const localStorageLabel = "readed";
+    const getLocalStorage = JSON.parse(localStorage.getItem(localStorageLabel));
+    this.act_storage(getLocalStorage);
+    if (getLocalStorage === null) {
+      localStorage.setItem(localStorageLabel, JSON.stringify([]));
     }
+    this.getSputnik();
   },
+
   methods: {
-    ...Vuex.mapActions(["act_multiplier", "act_login", "act_dataSputnik"]),
+    ...Vuex.mapActions([
+      "act_multiplier",
+      "act_login",
+      "act_dataSputnik",
+      "act_storage"
+    ]),
 
     isReaded(id) {
-      let readedId = JSON.parse(localStorage.getItem("readed"));
+      let readedId = this.get_storage;
       return readedId.includes(id);
     },
 
     readed(id) {
-      let array = JSON.parse(localStorage.getItem("readed"));
+      let array = this.get_storage;
       array.push(id);
       localStorage.setItem("readed", JSON.stringify(array));
+      this.act_storage(array);
       this.getSputnik();
     },
 
@@ -54,8 +66,9 @@ export default {
       });
     }
   },
+
   computed: {
-    ...Vuex.mapGetters(["get_data"])
+    ...Vuex.mapGetters(["get_data", "get_storage"])
   }
 };
 </script> 
