@@ -1,18 +1,11 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>{{ get_count }}</p>
-    <p>{{ get_auth.nickname }}, {{ get_auth.email }}</p>
-    <button @click="act_multiplier()">Multiplier</button>
-    <button @click="getGreetings()">Login</button>
-    <button @click="getSputnik()">Sputnik</button>
-
     <ul v-if="get_data.sputnik">
-      <li
-        style="display:block;"
-        v-for="item in get_data.sputnik"
-        :key="item.id"
-      >{{ item.note + " - " + item.artist + " - " + item.album + " - " + item.releaseDate}}</li>
+      <li v-for="item in get_data.sputnik" :key="item.id" :class="{readed: isReaded(item.id)}">
+        <span>{{ item.note + " - " + item.artist + " - " + item.album + " - " + item.releaseDate}}</span>
+        <button @click="readed(item.id)">OK</button>
+      </li>
     </ul>
   </div>
 </template>
@@ -27,9 +20,24 @@ export default {
   },
   mounted() {
     this.getSputnik();
+    if (JSON.parse(localStorage.getItem("readed")) === null) {
+      localStorage.setItem("readed", JSON.stringify([]));
+    }
   },
   methods: {
     ...Vuex.mapActions(["act_multiplier", "act_login", "act_dataSputnik"]),
+
+    isReaded(id) {
+      let readedId = JSON.parse(localStorage.getItem("readed"));
+      return readedId.includes(id);
+    },
+
+    readed(id) {
+      let array = JSON.parse(localStorage.getItem("readed"));
+      array.push(id);
+      localStorage.setItem("readed", JSON.stringify(array));
+      this.getSputnik();
+    },
 
     getSputnik() {
       fetch(
@@ -83,14 +91,13 @@ h3 {
   margin: 40px 0 0;
 }
 
+.readed {
+  background: rgb(128, 128, 128);
+}
+
 ul {
   list-style-type: none;
   padding: 0;
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
 }
 
 a {

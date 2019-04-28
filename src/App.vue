@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <router-link to="/">Home</router-link>
-    <router-link to="/youpi">Youpi</router-link>
+    <div class="menu">
+      <router-link class="menu__item" to="/">Home</router-link>
+      <router-link class="menu__item" to="/youpi">Youpi</router-link>
+    </div>
     <router-view/>
   </div>
 </template>
@@ -22,5 +23,21 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+
+.menu {
+  border-bottom: 1px solid black;
+
+  .router-link-exact-active {
+    background: #000;
+    color: white;
+  }
+
+  &__item {
+    padding: 20px 40px;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+  }
 }
 </style>
