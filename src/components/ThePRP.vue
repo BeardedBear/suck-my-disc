@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>youpi</h1>
+    <h1>The PRP</h1>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 // import Vuex from "vuex";
 
 export default {
-  name: "YoupiPage",
+  name: "The PRP",
   props: {
     msg: { type: String, default: "non" }
   }

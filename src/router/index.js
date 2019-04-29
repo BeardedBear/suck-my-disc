@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import HelloWorld from "../components/HelloWorld";
-import YoupiPage from "../components/YoupiPage";
+import ThePRP from "../components/ThePRP";
 
 Vue.use(Router);
 
@@ -13,9 +13,9 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: "/youpi",
-      name: "youpi page",
-      component: YoupiPage
+      path: "/theprp",
+      name: "The PRP",
+      component: ThePRP
     }
   ]
 });
