@@ -63,16 +63,10 @@ export default {
   },
 
   methods: {
-    ...Vuex.mapActions([
-      "act_multiplier",
-      "act_login",
-      "act_dataSputnik",
-      "act_storage"
-    ]),
+    ...Vuex.mapActions(["act_dataSputnik", "act_storage"]),
 
     copy(text) {
-      let copyText = text.artist + " - " + text.album;
-      navigator.clipboard.writeText(copyText);
+      navigator.clipboard.writeText(text.artist);
     },
 
     isReaded(id) {
@@ -90,7 +84,7 @@ export default {
 
     getSputnik() {
       fetch(
-        "https://api.apify.com/v2/acts/apify~web-scraper/runs/last/dataset/items?token=FJP765r6HtGXjJXYC9cmjnCco",
+        "https://api.apify.com/v2/actor-tasks/PkjaWZek2hn3JjXgG/runs/last/dataset/items?token=FJP765r6HtGXjJXYC9cmjnCco",
         {
           method: "get"
         }
