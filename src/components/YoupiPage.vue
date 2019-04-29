@@ -1,29 +1,20 @@
 <template>
   <div class="hello">
     <h1>youpi</h1>
-    <p>{{ get_count }}</p>
-    <button @click="act_multiplier()">Multiplier</button>
   </div>
 </template>
 
 <script>
-import Vuex from "vuex";
+// import Vuex from "vuex";
 
 export default {
   name: "YoupiPage",
   props: {
     msg: { type: String, default: "non" }
-  },
-  methods: {
-    ...Vuex.mapActions(["act_multiplier"])
-  },
-  computed: {
-    ...Vuex.mapGetters(["get_count"])
   }
 };
 </script> 
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;

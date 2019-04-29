@@ -1,7 +1,11 @@
 <template>
   <div class="hello">
-    <table v-if="get_data.sputnik">
-      <tr v-for="item in get_data.sputnik" :key="item.id" :class="{readed: isReaded(item.id)}">
+    <table v-if="this.$store.state.data.sputnik">
+      <tr
+        v-for="item in this.$store.state.data.sputnik"
+        :key="item.id"
+        :class="{readed: isReaded(item.id)}"
+      >
         <td>
           <button @click="readed(item.id)">OK</button>
         </td>
@@ -64,12 +68,12 @@ export default {
     ]),
 
     isReaded(id) {
-      let readedId = this.get_storage;
+      let readedId = this.$store.state.storage;
       return readedId.includes(id);
     },
 
     readed(id) {
-      let array = this.get_storage;
+      const array = this.$store.state.storage;
       array.push(id);
       localStorage.setItem("readed", JSON.stringify(array));
       this.act_storage(array);
@@ -90,10 +94,6 @@ export default {
         }
       });
     }
-  },
-
-  computed: {
-    ...Vuex.mapGetters(["get_data", "get_storage"])
   }
 };
 </script> 

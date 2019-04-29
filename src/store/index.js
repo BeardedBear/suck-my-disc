@@ -19,14 +19,7 @@ const mutations = {
   }
 };
 
-const getters = {
-  get_data: state => {
-    return state.data;
-  },
-  get_storage: state => {
-    return state.storage;
-  }
-};
+const getters = {};
 
 const actions = {
   act_dataSputnik: (store, data) => {
@@ -41,6 +34,6 @@ export default new Vuex.Store({
   state,
   mutations,
   getters,
-  actions,
-  strict: true
+  actions
+  // strict: true
 });

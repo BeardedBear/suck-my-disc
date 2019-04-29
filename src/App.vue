@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="menu">
-      <router-link class="menu__item" to="/">Home</router-link>
+      <span class="logo">SUCK MY DISC</span>
+      <router-link class="menu__item" to="/">Sputnik</router-link>
       <router-link class="menu__item" to="/youpi">Youpi</router-link>
     </div>
     <router-view/>
@@ -23,6 +24,12 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+
+.logo {
+  padding: 0 40px;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
 .menu {
