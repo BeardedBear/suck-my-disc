@@ -9,6 +9,9 @@
         <td>
           <button @click="readed(item.id)">OK</button>
         </td>
+        <td>
+          <button @click="copy(item)">Copy</button>
+        </td>
         <td>{{item.note}}</td>
         <td>{{item.artist}}</td>
         <td>{{item.album}}</td>
@@ -66,6 +69,11 @@ export default {
       "act_dataSputnik",
       "act_storage"
     ]),
+
+    copy(text) {
+      let copyText = text.artist + " - " + text.album;
+      navigator.clipboard.writeText(copyText);
+    },
 
     isReaded(id) {
       let readedId = this.$store.state.storage;
