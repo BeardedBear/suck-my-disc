@@ -110,6 +110,10 @@ h3 {
 
 .readed {
   opacity: 0.2;
+
+  button {
+    pointer-events: none;
+  }
 }
 
 ul {
