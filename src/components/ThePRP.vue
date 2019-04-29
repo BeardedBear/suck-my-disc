@@ -12,7 +12,6 @@
         <td>
           <button @click="copy(item)">Copy</button>
         </td>
-        <td>{{item.note}}</td>
         <td>{{item.artist}}</td>
         <td>{{item.album}}</td>
         <td>{{item.releaseDate}}</td>
@@ -90,7 +89,6 @@ export default {
       ).then(response => {
         if (response.ok) {
           response.json().then(res => {
-            console.log(res);
             this.act_dataPrp(res);
           });
         }

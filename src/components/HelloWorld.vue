@@ -103,27 +103,11 @@ export default {
 
 
 <style lang="scss" scoped>
-tr {
-  border-bottom: 1px solid black;
-}
-h3 {
-  margin: 40px 0 0;
-}
-
 .readed {
   opacity: 0.2;
 
   button {
     pointer-events: none;
   }
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-a {
-  color: #42b983;
 }
 </style>
