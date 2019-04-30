@@ -100,14 +100,3 @@ export default {
 };
 </script> 
 
-
-
-<style lang="scss" scoped>
-.readed {
-  opacity: 0.2;
-
-  button {
-    pointer-events: none;
-  }
-}
-</style>

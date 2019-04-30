@@ -25,6 +25,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #363636;
 }
+.readed {
+  opacity: 0.2;
+
+  button {
+    pointer-events: none;
+  }
+}
 
 .logo {
   padding: 0 40px;
