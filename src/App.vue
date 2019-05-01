@@ -23,8 +23,34 @@ export default {
   font-family: "Volkhov", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #363636;
+  color: #c6b8ca;
+  background-color: #392444;
 }
+
+a {
+  text-decoration: none;
+  color: #a72841;
+}
+
+button {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  background: #ffffff1a;
+  border: 1px solid #ffffff30;
+  border-radius: 3px;
+  color: white;
+  padding: 3px 10px 1px;
+  cursor: pointer;
+
+  &:hover {
+    background: #ffffff52;
+  }
+}
+.content {
+  padding: 30px;
+}
+
 .readed {
   opacity: 0.2;
 
@@ -40,18 +66,17 @@ export default {
 }
 
 .menu {
-  border-bottom: 1px solid black;
+  background-color: darken(#c93b57, 20);
 
   .router-link-exact-active {
-    background: #000;
-    color: white;
+    background: #c93b57;
   }
 
   &__item {
     padding: 20px 40px;
     display: inline-block;
     text-decoration: none;
-    color: black;
+    color: white;
   }
 }
 </style>

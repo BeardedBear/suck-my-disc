@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="content">
     <table v-if="this.$store.state.data.prp">
       <tr
         v-for="item in this.$store.state.data.prp"
