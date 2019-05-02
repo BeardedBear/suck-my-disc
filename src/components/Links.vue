@@ -27,8 +27,6 @@
 </template>
 
 <script>
-// import Vuex from "vuex";
-
 export default {
   name: "Links",
   props: {
