@@ -20,11 +20,12 @@ export default {
 
 <style lang="scss">
 html {
-  font-family: "Volkhov", serif;
+  font-family: "Nunito Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #c6b8ca;
-  background-color: #392444;
+  color: #a5a5a5;
+  font-weight: 500;
+  background-color: #211e23;
 }
 
 a {
@@ -42,6 +43,7 @@ button {
   color: white;
   padding: 3px 10px 1px;
   cursor: pointer;
+  font-weight: 800;
 
   &:hover {
     background: #ffffff52;
@@ -67,16 +69,24 @@ button {
 
 .menu {
   background-color: darken(#c93b57, 20);
-
-  .router-link-exact-active {
-    background: #c93b57;
-  }
+  padding: 10px;
 
   &__item {
-    padding: 20px 40px;
+    padding: 15px 35px;
     display: inline-block;
     text-decoration: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-right: 10px;
     color: white;
+
+    &:hover {
+      background-color: darken(#c93b57, 25);
+    }
+  }
+  .router-link-exact-active {
+    background: #c93b57;
   }
 }
 </style>

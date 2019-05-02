@@ -14,7 +14,7 @@ export default new Router({
     },
     {
       path: "/theprp",
-      name: "The PRP",
+      name: "ThePRP",
       component: ThePRP
     }
   ]

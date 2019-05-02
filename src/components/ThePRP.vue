@@ -12,7 +12,7 @@
         <td>
           <button @click="copy(item)">Copy</button>
         </td>
-        <td>{{item.artist}}</td>
+        <td class="artist">{{item.artist}}</td>
         <td>{{item.album}}</td>
         <td>{{item.releaseDate}}</td>
         <td>{{item.context}}</td>
@@ -81,3 +81,9 @@ export default {
 };
 </script> 
 
+<style lang="scss" scoped>
+.artist {
+  font-weight: 800;
+  color: #fff;
+}
+</style>
