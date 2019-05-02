@@ -15,27 +15,8 @@
         <td>{{item.artist}}</td>
         <td>{{item.album}}</td>
         <td>{{item.releaseDate}}</td>
-        <td>
-          <a
-            target="_BLANK"
-            :href="'https://www.sputnikmusic.com/search_results.php?genreid=0&amp;search_in=Bands&amp;search_text=' + item.artist"
-          >Sputnik</a>
-        </td>
-        <td>
-          <a target="_BLANK" :href="'https://fr.wikipedia.org/wiki/' + item.artist">Wiki</a>
-        </td>
-        <td>
-          <a
-            target="_BLANK"
-            :href="'https://rateyourmusic.com/artist/' + item.artist.toLowerCase().replace(' ', '-')"
-          >RYM -</a>
-        </td>
-        <td>
-          <a
-            target="_BLANK"
-            :href="'https://rateyourmusic.com/artist/' + item.artist.toLowerCase().replace(' ', '_')"
-          >RYM _</a>
-        </td>
+        <td>{{item.context}}</td>
+        <links :item="item"/>
       </tr>
     </table>
   </div>
@@ -43,12 +24,14 @@
 
 <script>
 import Vuex from "vuex";
+import Links from "./Links";
 
 export default {
   name: "The PRP",
   props: {
     msg: { type: String, default: "non" }
   },
+  components: { Links },
 
   mounted() {
     const localStorageLabel = "readed";

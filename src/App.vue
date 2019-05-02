@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
+html {
   font-family: "Volkhov", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
