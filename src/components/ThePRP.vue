@@ -27,7 +27,7 @@ import Vuex from "vuex";
 import Links from "./Links";
 
 export default {
-  name: "The PRP",
+  name: "ThePRP",
   props: {
     msg: { type: String, default: "non" }
   },
