@@ -13,7 +13,9 @@ import Layout from "./Layout";
 import SputnikMenu from "./SputnikMenu";
 
 export default {
-  name: "HelloWorld",
+  name: "SputnikAll",
   components: { Layout, SputnikMenu }
 };
 </script> 
+
+

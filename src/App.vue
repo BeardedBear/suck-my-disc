@@ -53,14 +53,6 @@ button {
   padding: 30px;
 }
 
-.readed {
-  opacity: 0.2;
-
-  button {
-    pointer-events: none;
-  }
-}
-
 .logo {
   padding: 0 40px;
   font-size: 1.4rem;

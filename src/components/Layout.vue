@@ -42,7 +42,12 @@ export default {
   },
 
   methods: {
-    ...Vuex.mapActions(["act_dataSputnik", "act_storage"]),
+    ...Vuex.mapActions([
+      "act_dataSputnikAll",
+      "act_storage",
+      "act_dataSputnikPop",
+      "act_dataSputnikPunk"
+    ]),
 
     copy(text) {
       navigator.clipboard.writeText(text.artist);
@@ -67,7 +72,28 @@ export default {
       }).then(response => {
         if (response.ok) {
           response.json().then(res => {
-            this.act_dataSputnik(res);
+            console.log(res);
+            this.act_dataSputnikAll(
+              res.filter(
+                item =>
+                  item.context ===
+                  "https://www.sputnikmusic.com/newreleases.php"
+              )
+            );
+            this.act_dataSputnikPop(
+              res.filter(
+                item =>
+                  item.context ===
+                  "https://www.sputnikmusic.com/newreleases.php?t=14"
+              )
+            );
+            this.act_dataSputnikPunk(
+              res.filter(
+                item =>
+                  item.context ===
+                  "https://www.sputnikmusic.com/newreleases.php?t=3"
+              )
+            );
           });
         }
       });
@@ -78,6 +104,14 @@ export default {
 
 
 <style lang="scss" scoped>
+.readed {
+  opacity: 0.2;
+
+  button {
+    pointer-events: none;
+  }
+}
+
 .artist {
   font-weight: 800;
   color: #fff;

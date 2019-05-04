@@ -5,15 +5,25 @@ Vue.use(Vuex);
 
 const state = {
   data: {
-    sputnik: [],
+    sputnik: {
+      all: [],
+      punk: [],
+      pop: []
+    },
     prp: []
   },
   storage: ""
 };
 
 const mutations = {
-  mut_dataSputnik: (state, data) => {
-    state.data.sputnik = data;
+  mut_dataSputnikAll: (state, data) => {
+    state.data.sputnik.all = data;
+  },
+  mut_dataSputnikPop: (state, data) => {
+    state.data.sputnik.pop = data;
+  },
+  mut_dataSputnikPunk: (state, data) => {
+    state.data.sputnik.punk = data;
   },
   mut_dataPrp: (state, data) => {
     state.data.prp = data;
@@ -26,8 +36,14 @@ const mutations = {
 const getters = {};
 
 const actions = {
-  act_dataSputnik: (store, data) => {
-    store.commit("mut_dataSputnik", data);
+  act_dataSputnikAll: (store, data) => {
+    store.commit("mut_dataSputnikAll", data);
+  },
+  act_dataSputnikPop: (store, data) => {
+    store.commit("mut_dataSputnikPop", data);
+  },
+  act_dataSputnikPunk: (store, data) => {
+    store.commit("mut_dataSputnikPunk", data);
   },
   act_dataPrp: (store, data) => {
     store.commit("mut_dataPrp", data);
