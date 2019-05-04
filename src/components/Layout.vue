@@ -44,9 +44,15 @@ export default {
   methods: {
     ...Vuex.mapActions([
       "act_dataSputnikAll",
+      "act_dataSputnikAltRock",
+      "act_dataSputnikElectro",
+      "act_dataSputnikHipHop",
+      "act_dataSputnikJazz",
+      "act_dataSputnikMetal",
       "act_storage",
       "act_dataSputnikPop",
-      "act_dataSputnikPunk"
+      "act_dataSputnikPunk",
+      "act_dataSputnikRock"
     ]),
 
     copy(text) {
@@ -72,12 +78,46 @@ export default {
       }).then(response => {
         if (response.ok) {
           response.json().then(res => {
-            console.log(res);
             this.act_dataSputnikAll(
               res.filter(
                 item =>
                   item.context ===
                   "https://www.sputnikmusic.com/newreleases.php"
+              )
+            );
+            this.act_dataSputnikAltRock(
+              res.filter(
+                item =>
+                  item.context ===
+                  "https://www.sputnikmusic.com/newreleases.php?t=21"
+              )
+            );
+            this.act_dataSputnikElectro(
+              res.filter(
+                item =>
+                  item.context ===
+                  "https://www.sputnikmusic.com/newreleases.php?t=58"
+              )
+            );
+            this.act_dataSputnikHipHop(
+              res.filter(
+                item =>
+                  item.context ===
+                  "https://www.sputnikmusic.com/newreleases.php?t=4"
+              )
+            );
+            this.act_dataSputnikJazz(
+              res.filter(
+                item =>
+                  item.context ===
+                  "https://www.sputnikmusic.com/newreleases.php?t=7"
+              )
+            );
+            this.act_dataSputnikMetal(
+              res.filter(
+                item =>
+                  item.context ===
+                  "https://www.sputnikmusic.com/newreleases.php?t=1"
               )
             );
             this.act_dataSputnikPop(
@@ -92,6 +132,13 @@ export default {
                 item =>
                   item.context ===
                   "https://www.sputnikmusic.com/newreleases.php?t=3"
+              )
+            );
+            this.act_dataSputnikRock(
+              res.filter(
+                item =>
+                  item.context ===
+                  "https://www.sputnikmusic.com/newreleases.php?t=30"
               )
             );
           });

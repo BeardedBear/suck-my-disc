@@ -1,14 +1,18 @@
 <template>
   <div class="pageMenu">
     <router-link class="pageMenu__item" to="/sputnik/all">All</router-link>
+    <router-link class="pageMenu__item" to="/sputnik/altrock">Alternative Rock</router-link>
+    <router-link class="pageMenu__item" to="/sputnik/electro">Electronic</router-link>
+    <router-link class="pageMenu__item" to="/sputnik/hiphop">Hip-Hop</router-link>
+    <router-link class="pageMenu__item" to="/sputnik/jazz">Jazz</router-link>
+    <router-link class="pageMenu__item" to="/sputnik/metal">Metal</router-link>
     <router-link class="pageMenu__item" to="/sputnik/punk">Punk</router-link>
     <router-link class="pageMenu__item" to="/sputnik/pop">Pop</router-link>
+    <router-link class="pageMenu__item" to="/sputnik/rock">Rock</router-link>
   </div>
 </template>
 
-  <script>
-// import Layout from "./Layout";
-
+<script>
 export default {
   name: "SputnikMenu"
 };
