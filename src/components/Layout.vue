@@ -42,18 +42,7 @@ export default {
   },
 
   methods: {
-    ...Vuex.mapActions([
-      "act_dataSputnikAll",
-      "act_dataSputnikAltRock",
-      "act_dataSputnikElectro",
-      "act_dataSputnikHipHop",
-      "act_dataSputnikJazz",
-      "act_dataSputnikMetal",
-      "act_dataSputnikPop",
-      "act_dataSputnikPunk",
-      "act_dataSputnikRock",
-      "act_storage"
-    ]),
+    ...Vuex.mapActions(["act_dataSputnik", "act_storage"]),
 
     copy(text) {
       navigator.clipboard.writeText(text.artist);
@@ -80,33 +69,58 @@ export default {
           response.json().then(res => {
             const sputnikUrl = "https://www.sputnikmusic.com/newreleases.php";
 
-            this.act_dataSputnikAll(
-              res.filter(item => item.context === sputnikUrl)
-            );
-            this.act_dataSputnikAltRock(
-              res.filter(item => item.context === sputnikUrl + "?t=21")
-            );
-            this.act_dataSputnikElectro(
-              res.filter(item => item.context === sputnikUrl + "?t=58")
-            );
-            this.act_dataSputnikHipHop(
-              res.filter(item => item.context === sputnikUrl + "?t=4")
-            );
-            this.act_dataSputnikJazz(
-              res.filter(item => item.context === sputnikUrl + "?t=7")
-            );
-            this.act_dataSputnikMetal(
-              res.filter(item => item.context === sputnikUrl + "?t=1")
-            );
-            this.act_dataSputnikPop(
-              res.filter(item => item.context === sputnikUrl + "?t=14")
-            );
-            this.act_dataSputnikPunk(
-              res.filter(item => item.context === sputnikUrl + "?t=3")
-            );
-            this.act_dataSputnikRock(
-              res.filter(item => item.context === sputnikUrl + "?t=30")
-            );
+            this.act_dataSputnik({
+              filteredObject: res.filter(item => item.context === sputnikUrl),
+              param: "all"
+            });
+            this.act_dataSputnik({
+              filteredObject: res.filter(
+                item => item.context === sputnikUrl + "?t=21"
+              ),
+              param: "altrock"
+            });
+            this.act_dataSputnik({
+              filteredObject: res.filter(
+                item => item.context === sputnikUrl + "?t=58"
+              ),
+              param: "electro"
+            });
+            this.act_dataSputnik({
+              filteredObject: res.filter(
+                item => item.context === sputnikUrl + "?t=4"
+              ),
+              param: "hiphop"
+            });
+            this.act_dataSputnik({
+              filteredObject: res.filter(
+                item => item.context === sputnikUrl + "?t=7"
+              ),
+              param: "jazz"
+            });
+            this.act_dataSputnik({
+              filteredObject: res.filter(
+                item => item.context === sputnikUrl + "?t=1"
+              ),
+              param: "metal"
+            });
+            this.act_dataSputnik({
+              filteredObject: res.filter(
+                item => item.context === sputnikUrl + "?t=14"
+              ),
+              param: "pop"
+            });
+            this.act_dataSputnik({
+              filteredObject: res.filter(
+                item => item.context === sputnikUrl + "?t=3"
+              ),
+              param: "punk"
+            });
+            this.act_dataSputnik({
+              filteredObject: res.filter(
+                item => item.context === sputnikUrl + "?t=30"
+              ),
+              param: "rock"
+            });
           });
         }
       });
