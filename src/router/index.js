@@ -1,16 +1,17 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "../components/Home";
-import ThePRP from "../components/ThePRP";
-import SputnikAll from "../components/sputnik/SputnikAll";
-import SputnikAltRock from "../components/sputnik/SputnikAltRock";
-import SputnikElectro from "../components/sputnik/SputnikElectro";
-import SputnikHipHop from "../components/sputnik/SputnikHipHop";
-import SputnikJazz from "../components/sputnik/SputnikJazz";
-import SputnikMetal from "../components/sputnik/SputnikMetal";
-import SputnikPunk from "../components/sputnik/SputnikPunk";
-import SputnikPop from "../components/sputnik/SputnikPop";
-import SputnikRock from "../components/sputnik/SputnikRock";
+import Home from "@/components/Home";
+import ThePRP from "@/components/ThePRP";
+import Index from "@/components/Sputnik/Index";
+import All from "@/components/Sputnik/All";
+import AltRock from "@/components/Sputnik/AltRock";
+import Electro from "@/components/Sputnik/Electro";
+import HipHop from "@/components/Sputnik/HipHop";
+import Jazz from "@/components/Sputnik/Jazz";
+import Metal from "@/components/Sputnik/Metal";
+import Punk from "@/components/Sputnik/Punk";
+import Pop from "@/components/Sputnik/Pop";
+import Rock from "@/components/Sputnik/Rock";
 
 Vue.use(Router);
 
@@ -22,50 +23,62 @@ export default new Router({
       component: Home
     },
     {
-      path: "/sputnik/all",
-      name: "SputnikAll",
-      component: SputnikAll
+      path: "/sputnik",
+      component: Index,
+      children: [
+        {
+          path: "",
+          name: "All",
+          component: All
+        },
+        {
+          path: "altrock",
+          name: "AltRock",
+          component: AltRock
+        },
+        {
+          path: "all",
+          name: "All",
+          component: All
+        },
+        {
+          path: "electro",
+          name: "Electro",
+          component: Electro
+        },
+        {
+          path: "hiphop",
+          name: "HipHop",
+          component: HipHop
+        },
+        {
+          path: "jazz",
+          name: "Jazz",
+          component: Jazz
+        },
+        {
+          path: "metal",
+          name: "Metal",
+          component: Metal
+        },
+        {
+          path: "punk",
+          name: "Punk",
+          component: Punk
+        },
+        {
+          path: "pop",
+          name: "Pop",
+          component: Pop
+        },
+        {
+          path: "rock",
+          name: "Rock",
+          component: Rock
+        }
+      ]
     },
-    {
-      path: "/sputnik/altrock",
-      name: "SputnikAltRock",
-      component: SputnikAltRock
-    },
-    {
-      path: "/sputnik/electro",
-      name: "SputnikElectro",
-      component: SputnikElectro
-    },
-    {
-      path: "/sputnik/hiphop",
-      name: "SputnikHipHop",
-      component: SputnikHipHop
-    },
-    {
-      path: "/sputnik/jazz",
-      name: "SputnikJazz",
-      component: SputnikJazz
-    },
-    {
-      path: "/sputnik/metal",
-      name: "SputnikMetal",
-      component: SputnikMetal
-    },
-    {
-      path: "/sputnik/punk",
-      name: "SputnikPunk",
-      component: SputnikPunk
-    },
-    {
-      path: "/sputnik/pop",
-      name: "SputnikPop",
-      component: SputnikPop
-    },
-    {
-      path: "/sputnik/rock",
-      name: "SputnikRock",
-      component: SputnikRock
-    },
+
     {
       path: "/theprp",
       name: "ThePRP",

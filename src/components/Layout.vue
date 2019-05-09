@@ -39,6 +39,7 @@ export default {
       localStorage.setItem(localStorageLabel, JSON.stringify([]));
     }
     this.getSputnik();
+    console.log(this.$route);
   },
 
   methods: {
@@ -144,3 +145,14 @@ export default {
   color: #fff;
 }
 </style>
+
+
+
+
+.footer {
+  background: blue;
+
+  p {
+    color: red;
+  }
+}

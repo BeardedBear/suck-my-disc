@@ -12,11 +12,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "SputnikMenu"
-};
-</script> 
+
 
 <style lang="scss" scoped>
 .pageMenu {

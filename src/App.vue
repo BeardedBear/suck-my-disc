@@ -2,7 +2,7 @@
   <div id="app">
     <div class="menu">
       <span class="logo">SUCK MY DISC</span>
-      <router-link class="menu__item" to="/">Sputnik</router-link>
+      <router-link class="menu__item" to="/sputnik">Sputnik</router-link>
       <router-link class="menu__item" to="/theprp">The PRP</router-link>
     </div>
     <router-view/>
