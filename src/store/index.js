@@ -12,11 +12,11 @@ const state = {
 };
 
 const mutations = {
-  mut_dataSputnik: (state, { filteredObject, param }) => {
-    state.data.sputnik[param] = filteredObject;
+  mut_dataSputnik: (state, { filteredObject }) => {
+    state.data = filteredObject;
   },
   mut_dataPrp: (state, data) => {
-    state.data.prp = data;
+    state.data = data;
   },
   mut_storage: (state, data) => {
     state.storage = data;

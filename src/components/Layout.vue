@@ -39,7 +39,6 @@ export default {
       localStorage.setItem(localStorageLabel, JSON.stringify([]));
     }
     this.getSputnik();
-    console.log(this.$route);
   },
 
   methods: {
@@ -69,59 +68,44 @@ export default {
         if (response.ok) {
           response.json().then(res => {
             const sputnikUrl = "https://www.sputnikmusic.com/newreleases.php";
+            let route = this.$route.name.toLowerCase();
+            let getData = param => {
+              this.act_dataSputnik({
+                filteredObject: res.filter(
+                  item => item.context === sputnikUrl + param
+                )
+              });
+            };
 
-            this.act_dataSputnik({
-              filteredObject: res.filter(item => item.context === sputnikUrl),
-              param: "all"
-            });
-            this.act_dataSputnik({
-              filteredObject: res.filter(
-                item => item.context === sputnikUrl + "?t=21"
-              ),
-              param: "altrock"
-            });
-            this.act_dataSputnik({
-              filteredObject: res.filter(
-                item => item.context === sputnikUrl + "?t=58"
-              ),
-              param: "electro"
-            });
-            this.act_dataSputnik({
-              filteredObject: res.filter(
-                item => item.context === sputnikUrl + "?t=4"
-              ),
-              param: "hiphop"
-            });
-            this.act_dataSputnik({
-              filteredObject: res.filter(
-                item => item.context === sputnikUrl + "?t=7"
-              ),
-              param: "jazz"
-            });
-            this.act_dataSputnik({
-              filteredObject: res.filter(
-                item => item.context === sputnikUrl + "?t=1"
-              ),
-              param: "metal"
-            });
-            this.act_dataSputnik({
-              filteredObject: res.filter(
-                item => item.context === sputnikUrl + "?t=14"
-              ),
-              param: "pop"
-            });
-            this.act_dataSputnik({
-              filteredObject: res.filter(
-                item => item.context === sputnikUrl + "?t=3"
-              ),
-              param: "punk"
-            });
-            this.act_dataSputnik({
-              filteredObject: res.filter(
-                item => item.context === sputnikUrl + "?t=30"
-              ),
-              param: "rock"
-            });
+            switch (route) {
+              case "all":
+                getData("");
+                break;
+              case "altrock":
+                getData("?t=21");
+                break;
+              case "electro":
+                getData("?t=58");
+                break;
+              case "hiphop":
+                getData("?t=4");
+                break;
+              case "jazz":
+                getData("?t=7");
+                break;
+              case "metal":
+                getData("?t=1");
+                break;
+              case "pop":
+                getData("?t=14");
+                break;
+              case "punk":
+                getData("?t=3");
+                break;
+              case "rock":
+                getData("?t=30");
+                break;
+            }
           });
         }
       });
