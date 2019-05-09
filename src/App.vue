@@ -92,7 +92,8 @@ button {
       background-color: darken(#c93b57, 25);
     }
   }
-  .router-link-exact-active {
+  .router-link-exact-active,
+  .router-link-active {
     background: #c93b57;
   }
 }

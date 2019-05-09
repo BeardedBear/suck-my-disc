@@ -16,8 +16,6 @@
 </template>
 
  
-
- 
 <style lang="scss" scoped>
 .pageMenu {
   padding: 10px 30px;
@@ -34,9 +32,5 @@
       color: #fff;
     }
   }
-}
-
-.router-link-active {
-  background: #c93b57;
 }
 </style>
