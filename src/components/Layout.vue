@@ -1,7 +1,11 @@
 <template>
   <div class="content">
-    <table v-if="data">
-      <tr v-for="item in data" :key="item.id" :class="{readed: isReaded(item.id)}">
+    <table v-if="this.$store.state.data">
+      <tr
+        v-for="item in this.$store.state.data"
+        :key="item.id"
+        :class="{readed: isReaded(item.id)}"
+      >
         <td>
           <button @click="readed(item.id)">OK</button>
         </td>
@@ -32,12 +36,6 @@ export default {
   },
 
   mounted() {
-    const localStorageLabel = "readed";
-    const getLocalStorage = JSON.parse(localStorage.getItem(localStorageLabel));
-    this.act_storage(getLocalStorage);
-    if (getLocalStorage === null) {
-      localStorage.setItem(localStorageLabel, JSON.stringify([]));
-    }
     this.getSputnik();
   },
 
@@ -131,12 +129,3 @@ export default {
 </style>
 
 
-
-
-.footer {
-  background: blue;
-
-  p {
-    color: red;
-  }
-}

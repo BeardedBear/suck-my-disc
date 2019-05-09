@@ -10,10 +10,25 @@
 </template>
 
 <script>
+import Vuex from "vuex";
 import store from "./store";
 
 export default {
   name: "app",
+
+  methods: {
+    ...Vuex.mapActions(["act_storage"])
+  },
+
+  created() {
+    const localStorageLabel = "readed";
+    const getLocalStorage = JSON.parse(localStorage.getItem(localStorageLabel));
+    this.act_storage(getLocalStorage);
+    if (getLocalStorage === null) {
+      localStorage.setItem(localStorageLabel, JSON.stringify([]));
+    }
+  },
+
   store
 };
 </script>
