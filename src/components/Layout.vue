@@ -68,7 +68,7 @@ export default {
         if (response.ok) {
           response.json().then(res => {
             const sputnikUrl = "https://www.sputnikmusic.com/newreleases.php";
-            let route = this.$route.name.toLowerCase();
+            let route = this.$route.name;
             let getData = param => {
               this.act_dataSputnik({
                 filteredObject: res.filter(
@@ -77,7 +77,7 @@ export default {
               });
             };
 
-            switch (route) {
+            switch (route.toLowerCase()) {
               case "all":
                 getData("");
                 break;
