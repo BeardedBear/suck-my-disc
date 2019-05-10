@@ -2,34 +2,21 @@
   <div id="app">
     <div class="menu">
       <span class="logo">SUCK MY DISC</span>
-      <router-link class="menu__item" to="/sputnik">Sputnik</router-link>
-      <router-link class="menu__item" to="/theprp">The PRP</router-link>
+      <router-link class="menu__item" :to="{name: 'sputnik'}">Sputnik</router-link>
+      <router-link class="menu__item" :to="{name: 'prp'}">The PRP</router-link>
     </div>
     <router-view/>
   </div>
 </template>
 
 <script>
-import Vuex from "vuex";
-import store from "./store";
+import {mapActions} from "vuex";
 
 export default {
   name: "app",
-
   methods: {
-    ...Vuex.mapActions(["act_storage"])
-  },
-
-  created() {
-    const localStorageLabel = "readed";
-    const getLocalStorage = JSON.parse(localStorage.getItem(localStorageLabel));
-    this.act_storage(getLocalStorage);
-    if (getLocalStorage === null) {
-      localStorage.setItem(localStorageLabel, JSON.stringify([]));
-    }
-  },
-
-  store
+    ...mapActions(["act_storage"])
+  }
 };
 </script>
 

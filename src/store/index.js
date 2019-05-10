@@ -1,42 +1,39 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import  {getSputnik, getPrp} from '../api/index';
 
 Vue.use(Vuex);
 
 const state = {
-  data: [],
-  storage: ""
+  data: []
 };
 
 const mutations = {
-  mut_dataSputnik: (state, { filteredObject }) => {
-    state.data = filteredObject;
-  },
-  mut_dataPrp: (state, data) => {
+  mut_data: (state, data) => {
     state.data = data;
-  },
-  mut_emptyData: state => {
-    state.data = [];
-  },
-  mut_storage: (state, data) => {
-    state.storage = data;
   }
 };
 
 const getters = {};
 
 const actions = {
-  act_dataSputnik: (store, { filteredObject, param }) => {
-    store.commit("mut_dataSputnik", { filteredObject, param });
+  async act_dataSputnik(store) {
+    try {
+      const data = await getSputnik()
+      store.commit("mut_data", data);
+      return data;
+    } catch(e) {
+      console.log(e);
+    } 
   },
-  act_dataPrp: (store, data) => {
-    store.commit("mut_dataPrp", data);
-  },
-  act_emptyData: store => {
-    store.commit("mut_emptyData");
-  },
-  act_storage: (store, data) => {
-    store.commit("mut_storage", data);
+  async act_dataPrp(store) {
+    try {
+      const data = await getPrp()
+      store.commit("mut_data", data);
+      return data;
+    } catch(e) {
+      console.log(e);
+    }
   }
 };
 
@@ -45,5 +42,5 @@ export default new Vuex.Store({
   mutations,
   getters,
   actions,
-  strict: true
+  strict: process.env.NODE_ENV !== "production"
 });
