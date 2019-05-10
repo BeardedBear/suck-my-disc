@@ -4,7 +4,7 @@
       <tr
         v-for="item in this.$store.state.data"
         :key="item.id"
-        :class="{readed: isReaded(item.id)}"
+        :class="[{readed: isReaded(item.id)}, {futur: isFutur(item.releaseDateRaw)}, {current: isCurrent(item.releaseDateRaw)}]"
       >
         <td>
           <button @click="readed(item.id)">OK</button>
@@ -51,6 +51,20 @@ export default {
       return readedId.includes(id);
     },
 
+    isFutur(date) {
+      let currentDate = Date.parse(new Date());
+      if (currentDate <= date) {
+        return true;
+      }
+    },
+
+    isCurrent(date) {
+      let currentDate = Date.parse(new Date());
+      if (date <= currentDate && date >= currentDate - 84600000 * 6) {
+        return true;
+      }
+    },
+
     readed(id) {
       const array = this.$store.state.storage;
       array.push(id);
@@ -65,7 +79,8 @@ export default {
       }).then(response => {
         if (response.ok) {
           response.json().then(res => {
-            const sputnikUrl = "https://www.sputnikmusic.com/newreleases.php";
+            const sputnikUrl =
+              "https://www.sputnikmusic.com/newreleases.php?t=";
             let route = this.$route.name;
             let getData = param => {
               this.act_dataSputnik({
@@ -77,31 +92,31 @@ export default {
 
             switch (route.toLowerCase()) {
               case "all":
-                getData("");
+                getData("0");
                 break;
               case "altrock":
-                getData("?t=21");
+                getData("21");
                 break;
               case "electro":
-                getData("?t=58");
+                getData("58");
                 break;
               case "hiphop":
-                getData("?t=4");
+                getData("4");
                 break;
               case "jazz":
-                getData("?t=7");
+                getData("7");
                 break;
               case "metal":
-                getData("?t=1");
+                getData("1");
                 break;
               case "pop":
-                getData("?t=14");
+                getData("14");
                 break;
               case "punk":
-                getData("?t=3");
+                getData("3");
                 break;
               case "rock":
-                getData("?t=30");
+                getData("30");
                 break;
             }
           });
@@ -120,6 +135,14 @@ export default {
   button {
     pointer-events: none;
   }
+}
+
+.futur {
+  background: #442424;
+}
+
+.current {
+  background: #00800021;
 }
 
 .artist {
