@@ -15,6 +15,9 @@ const mutations = {
   mut_dataPrp: (state, data) => {
     state.data = data;
   },
+  mut_emptyData: state => {
+    state.data = [];
+  },
   mut_storage: (state, data) => {
     state.storage = data;
   }
@@ -28,6 +31,9 @@ const actions = {
   },
   act_dataPrp: (store, data) => {
     store.commit("mut_dataPrp", data);
+  },
+  act_emptyData: store => {
+    store.commit("mut_emptyData");
   },
   act_storage: (store, data) => {
     store.commit("mut_storage", data);

@@ -1,10 +1,15 @@
 <template>
   <div class="content">
+    <span v-if="this.isEmptyData()">Loading...</span>
     <table v-if="this.$store.state.data">
       <tr
         v-for="item in this.$store.state.data"
         :key="item.id"
-        :class="[{readed: isReaded(item.id)}, {futur: isFutur(item.releaseDateRaw)}, {current: isCurrent(item.releaseDateRaw)}]"
+        :class="[
+          {readed: isReaded(item.id)}, 
+          {futur: isFutur(item.releaseDateRaw)}, 
+          {current: isCurrent(item.releaseDateRaw)}
+        ]"
       >
         <td>
           <button @click="readed(item.id)">OK</button>
@@ -36,14 +41,21 @@ export default {
   },
 
   mounted() {
+    this.act_emptyData();
     this.getSputnik();
   },
 
   methods: {
-    ...Vuex.mapActions(["act_dataSputnik", "act_storage"]),
+    ...Vuex.mapActions(["act_dataSputnik", "act_storage", "act_emptyData"]),
 
     copy(text) {
       navigator.clipboard.writeText(text.artist);
+    },
+
+    isEmptyData() {
+      if (this.$store.state.data.length === 0) {
+        return true;
+      }
     },
 
     isReaded(id) {
