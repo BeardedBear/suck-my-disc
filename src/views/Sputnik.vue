@@ -11,54 +11,60 @@
       <a class="pageMenu__item" @click.prevent="switchFilter('pop')">Pop</a>
       <a class="pageMenu__item" @click.prevent="switchFilter('rock')">Rock</a>
     </div>
-    <GroupList :datas="getFilterData" />
+    <GroupList :datas="getFilterData"/>
   </div>
 </template>
 
+
 <script>
-import GroupList from '@/components/GroupList';
-import {mapActions} from 'vuex';
+import GroupList from "@/components/GroupList";
+import { mapActions } from "vuex";
 
 export default {
   components: {
     GroupList
   },
+
   data: () => {
     return {
-      filter: '0',
+      filter: "0",
       filters: {
-        "all": "0",
-        "altrock": "21",
-        "electro": "58",
-        "hiphop": "4",
-        "jazz": "7",
-        "metal": "1",
-        "pop":"14",
-        "punk": "3",
-        "rock": "30"
+        all: "0",
+        altrock: "21",
+        electro: "58",
+        hiphop: "4",
+        jazz: "7",
+        metal: "1",
+        pop: "14",
+        punk: "3",
+        rock: "30"
       },
       checkUrl: "https://www.sputnikmusic.com/newreleases.php?t="
-    }
+    };
   },
+
   methods: {
     switchFilter(name) {
       this.filter = this.filters[name];
     },
-    ...mapActions([
-      'act_dataSputnik'
-    ])
+    ...mapActions(["act_dataSputnik"])
   },
+
   computed: {
     getFilterData() {
-      return this.$store.state.data.filter(item => item.context === this.checkUrl + this.filter);
+      return this.$store.state.data.filter(
+        item => item.context === this.checkUrl + this.filter
+      );
     }
   },
+
   async beforeCreate() {
-      await this.$store.dispatch('act_dataSputnik')
+    await this.$store.dispatch("act_dataSputnik");
   }
-}
+};
 </script>
  
+
 <style lang="scss" scoped>
 .pageMenu {
   padding: 10px 30px;

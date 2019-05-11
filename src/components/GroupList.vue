@@ -2,13 +2,19 @@
   <div class="content">
     <table>
       <tr
-        v-for="(item, i) in datas"
-        :key="i">
+        v-for="item in datas"
+        :key="item.id"
+        :class="[	
+          {readed: isReaded(item.id)}, 	
+          {futur: isFutur(item.releaseDateRaw)}, 	
+          {current: isCurrent(item.releaseDateRaw)}	
+        ]"
+      >
         <td>
-          <button>OK</button>
+          <button @click="readed(item.id)">OK</button>
         </td>
         <td>
-          <button>Copy</button>
+          <button @click="copy(item)">Copy</button>
         </td>
         <td>{{item.note}}</td>
         <td class="artist">{{item.artist}}</td>
@@ -22,14 +28,47 @@
 
 <script>
 import Links from "./Links";
+import { mapActions } from "vuex";
 
 export default {
   name: "Layout",
   components: { Links },
+
   props: {
     datas: {
       type: Array,
       default: () => []
+    }
+  },
+
+  methods: {
+    ...mapActions(["act_storage", "act_dataSputnik"]),
+
+    copy(text) {
+      navigator.clipboard.writeText(text.artist);
+    },
+
+    readed(id) {
+      this.act_storage(id);
+    },
+
+    isReaded(id) {
+      let readedId = this.$store.state.storage;
+      return readedId.includes(id);
+    },
+
+    isFutur(date) {
+      let currentDate = Date.parse(new Date());
+      if (currentDate <= date) {
+        return true;
+      }
+    },
+
+    isCurrent(date) {
+      let currentDate = Date.parse(new Date());
+      if (date <= currentDate && date >= currentDate - 84600000 * 6) {
+        return true;
+      }
     }
   }
 };
