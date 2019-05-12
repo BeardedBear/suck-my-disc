@@ -1,35 +1,9 @@
 # Suck My Disc
 
-## Project setup
+## ce qu'il manque:
 
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm start
-```
-
-### Compiles and minifies for production
-
-```
-npm run builds
-```
-
-### Run your tests
-
-```
-npm run test
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- persistence auto avec le store vuex https://github.com/robinvdvleuten/vuex-persistedstate
+- vueI18n
+- test unit (vue test utils + jest)
+- test fonctionnal (cypress)
+- generation de la doc (vuepress)

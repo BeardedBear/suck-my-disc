@@ -30,7 +30,10 @@
 export default {
   name: "Links",
   props: {
-    item: { type: Object }
+    item: {
+      type: Object,
+      required: false
+    }
   }
 };
 </script> 
