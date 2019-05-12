@@ -38,7 +38,7 @@ export default {
           param: "21"
         },
         {
-          label: "Electonic",
+          label: "Electronic",
           slot: "electro",
           param: "58"
         },
@@ -110,16 +110,23 @@ export default {
   padding: 10px 30px;
 
   &__item {
+    all: unset;
     display: inline-block;
     padding: 10px 20px;
-    border-radius: 5px;
     text-transform: uppercase;
     font-weight: 800;
     cursor: pointer;
+    border-bottom: 3px solid rgba(white, 0.1);
+    color: rgba(white, 0.3);
+
+    &:hover {
+      color: rgba(white, 0.5);
+      border-color: rgba(white, 0.3);
+    }
 
     &.active {
-      background: #c93b57;
-      color: #fff;
+      border-color: #c93b57;
+      color: #c93b57;
     }
   }
 }
