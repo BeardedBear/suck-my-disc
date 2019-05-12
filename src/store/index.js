@@ -7,7 +7,10 @@ Vue.use(Vuex);
 
 const state = {
   data: [],
-  storage: []
+  storage: [],
+  sputnik: {
+    activeTab: "all"
+  }
 };
 
 const mutations = {
@@ -16,6 +19,9 @@ const mutations = {
   },
   mut_storage: (state, data) => {
     state.storage = [...state.storage, data];
+  },
+  mut_sputnikActiveTab: (state, name) => {
+    state.sputnik.activeTab = name;
   }
 };
 
@@ -42,6 +48,9 @@ const actions = {
   },
   act_storage: (store, data) => {
     store.commit("mut_storage", data);
+  },
+  act_sputnikActiveTab: (store, name) => {
+    store.commit("mut_sputnikActiveTab", name);
   }
 };
 

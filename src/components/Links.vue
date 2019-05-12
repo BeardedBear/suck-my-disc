@@ -30,9 +30,9 @@
 export default {
   name: "Links",
   props: {
-    item: { 
+    item: {
       type: Object,
-      required: false 
+      required: false
     }
   }
 };

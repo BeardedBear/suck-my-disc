@@ -1,15 +1,51 @@
 <template>
   <div>
     <div class="pageMenu">
-      <a class="pageMenu__item" @click.prevent="switchFilter('all')">All</a>
-      <a class="pageMenu__item" @click.prevent="switchFilter('altrock')">Alternative Rock</a>
-      <a class="pageMenu__item" @click.prevent="switchFilter('electro')">Electronic</a>
-      <a class="pageMenu__item" @click.prevent="switchFilter('hiphop')">Hip-Hop</a>
-      <a class="pageMenu__item" @click.prevent="switchFilter('jazz')">Jazz</a>
-      <a class="pageMenu__item" @click.prevent="switchFilter('metal')">Metal</a>
-      <a class="pageMenu__item" @click.prevent="switchFilter('punk')">Punk</a>
-      <a class="pageMenu__item" @click.prevent="switchFilter('pop')">Pop</a>
-      <a class="pageMenu__item" @click.prevent="switchFilter('rock')">Rock</a>
+      <a
+        class="pageMenu__item"
+        :class="{active: activeTab('all')}"
+        @click.prevent="switchFilter('all')"
+      >All</a>
+      <a
+        class="pageMenu__item"
+        :class="{active: activeTab('altrock')}"
+        @click.prevent="switchFilter('altrock')"
+      >Alternative Rock</a>
+      <a
+        class="pageMenu__item"
+        :class="{active: activeTab('electro')}"
+        @click.prevent="switchFilter('electro')"
+      >Electronic</a>
+      <a
+        class="pageMenu__item"
+        :class="{active: activeTab('hiphop')}"
+        @click.prevent="switchFilter('hiphop')"
+      >Hip-Hop</a>
+      <a
+        class="pageMenu__item"
+        :class="{active: activeTab('jazz')}"
+        @click.prevent="switchFilter('jazz')"
+      >Jazz</a>
+      <a
+        class="pageMenu__item"
+        :class="{active: activeTab('metal')}"
+        @click.prevent="switchFilter('metal')"
+      >Metal</a>
+      <a
+        class="pageMenu__item"
+        :class="{active: activeTab('punk')}"
+        @click.prevent="switchFilter('punk')"
+      >Punk</a>
+      <a
+        class="pageMenu__item"
+        :class="{active: activeTab('pop')}"
+        @click.prevent="switchFilter('pop')"
+      >Pop</a>
+      <a
+        class="pageMenu__item"
+        :class="{active: activeTab('rock')}"
+        @click.prevent="switchFilter('rock')"
+      >Rock</a>
     </div>
     <GroupList :datas="getFilterData"/>
   </div>
@@ -45,9 +81,15 @@ export default {
 
   methods: {
     switchFilter(name) {
+      this.act_sputnikActiveTab(name);
       this.filter = this.filters[name];
     },
-    ...mapActions(["act_dataSputnik"])
+
+    activeTab(name) {
+      if (name === this.$store.state.sputnik.activeTab) return true;
+    },
+
+    ...mapActions(["act_dataSputnik", "act_sputnikActiveTab"])
   },
 
   computed: {
@@ -75,8 +117,9 @@ export default {
     border-radius: 5px;
     text-transform: uppercase;
     font-weight: 800;
+    cursor: pointer;
 
-    &.a-exact-active {
+    &.active {
       background: #c93b57;
       color: #fff;
     }
