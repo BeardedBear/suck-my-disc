@@ -16,7 +16,7 @@
         <td>
           <button @click="copy(item)">Copy</button>
         </td>
-        <td>{{item.note}}</td>
+        <td :class="'note' + item.note.replace('.', '')">{{item.note}}</td>
         <td class="artist">{{item.artist}}</td>
         <td>{{item.album}}</td>
         <td>{{item.releaseDate}}</td>
@@ -76,6 +76,16 @@ export default {
 
 
 <style lang="scss" scoped>
+@for $i from 36 through 50 {
+  .note#{$i} {
+    background: hsla(100 * ($i/10 * 2), 50%, 40%, 1);
+    color: hsla(100 * ($i/10 * 2), 50%, 65%, 1);
+    padding: 0 10px;
+    border-radius: 4px;
+    font-weight: 800;
+  }
+}
+
 .readed {
   opacity: 0.2;
 
