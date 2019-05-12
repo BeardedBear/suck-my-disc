@@ -1,51 +1,13 @@
 <template>
   <div>
     <div class="pageMenu">
-      <a
+      <button
+        v-for="(item, id) in filters"
         class="pageMenu__item"
-        :class="{active: activeTab('all')}"
-        @click.prevent="switchFilter('all')"
-      >All</a>
-      <a
-        class="pageMenu__item"
-        :class="{active: activeTab('altrock')}"
-        @click.prevent="switchFilter('altrock')"
-      >Alternative Rock</a>
-      <a
-        class="pageMenu__item"
-        :class="{active: activeTab('electro')}"
-        @click.prevent="switchFilter('electro')"
-      >Electronic</a>
-      <a
-        class="pageMenu__item"
-        :class="{active: activeTab('hiphop')}"
-        @click.prevent="switchFilter('hiphop')"
-      >Hip-Hop</a>
-      <a
-        class="pageMenu__item"
-        :class="{active: activeTab('jazz')}"
-        @click.prevent="switchFilter('jazz')"
-      >Jazz</a>
-      <a
-        class="pageMenu__item"
-        :class="{active: activeTab('metal')}"
-        @click.prevent="switchFilter('metal')"
-      >Metal</a>
-      <a
-        class="pageMenu__item"
-        :class="{active: activeTab('punk')}"
-        @click.prevent="switchFilter('punk')"
-      >Punk</a>
-      <a
-        class="pageMenu__item"
-        :class="{active: activeTab('pop')}"
-        @click.prevent="switchFilter('pop')"
-      >Pop</a>
-      <a
-        class="pageMenu__item"
-        :class="{active: activeTab('rock')}"
-        @click.prevent="switchFilter('rock')"
-      >Rock</a>
+        :key="id"
+        :class="{active: activeTab(item)}"
+        @click.prevent="switchFilter(item)"
+      >{{item.label}}</button>
     </div>
     <GroupList :datas="getFilterData"/>
   </div>
@@ -64,29 +26,65 @@ export default {
   data: () => {
     return {
       filter: "0",
-      filters: {
-        all: "0",
-        altrock: "21",
-        electro: "58",
-        hiphop: "4",
-        jazz: "7",
-        metal: "1",
-        pop: "14",
-        punk: "3",
-        rock: "30"
-      },
+      filters: [
+        {
+          label: "All",
+          slot: "all",
+          param: "0"
+        },
+        {
+          label: "Alternative Rock",
+          slot: "altrock",
+          param: "21"
+        },
+        {
+          label: "Electonic",
+          slot: "electro",
+          param: "58"
+        },
+        {
+          label: "Hip-Hop",
+          slot: "hiphop",
+          param: "4"
+        },
+        {
+          label: "Jazz",
+          slot: "jazz",
+          param: "7"
+        },
+        {
+          label: "Metal",
+          slot: "metal",
+          param: "1"
+        },
+        {
+          label: "Pop",
+          slot: "pop",
+          param: "14"
+        },
+        {
+          label: "Punk",
+          slot: "punk",
+          param: "3"
+        },
+        {
+          label: "Rock",
+          slot: "rock",
+          param: "30"
+        }
+      ],
       checkUrl: "https://www.sputnikmusic.com/newreleases.php?t="
     };
   },
 
   methods: {
     switchFilter(name) {
-      this.act_sputnikActiveTab(name);
-      this.filter = this.filters[name];
+      this.act_sputnikActiveTab(name.slot);
+      this.filter = name.param;
     },
 
     activeTab(name) {
-      if (name === this.$store.state.sputnik.activeTab) return true;
+      if (name.slot === this.$store.state.sputnik.activeTab) return true;
     },
 
     ...mapActions(["act_dataSputnik", "act_sputnikActiveTab"])

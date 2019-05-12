@@ -58,7 +58,7 @@ export default new Vuex.Store({
   state,
   plugins: [
     createPersistedState({
-      paths: ["storage"]
+      paths: ["storage", "sputnik"]
     })
   ],
   mutations,
