@@ -2,8 +2,8 @@
   <div class="content">
     <table>
       <tr
-        v-for="item in datas"
-        :key="item.id"
+        v-for="(item, id) in datas"
+        :key="id"
         :class="[	
           {readed: isReaded(item.id)}, 	
           {futur: isFutur(item.releaseDateRaw)}, 	
@@ -31,7 +31,7 @@ import Links from "./Links";
 import { mapActions } from "vuex";
 
 export default {
-  name: "Layout",
+  name: "GroupList",
   components: { Links },
 
   props: {

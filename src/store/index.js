@@ -47,7 +47,11 @@ const actions = {
 
 export default new Vuex.Store({
   state,
-  plugins: [createPersistedState()],
+  plugins: [
+    createPersistedState({
+      paths: ["storage"]
+    })
+  ],
   mutations,
   getters,
   actions,
