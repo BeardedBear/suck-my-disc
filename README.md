@@ -1,9 +1,19 @@
 # Suck My Disc
 
-## ce qu'il manque:
+## Installation
 
-- persistence auto avec le store vuex https://github.com/robinvdvleuten/vuex-persistedstate
-- vueI18n
+`npm start`
+
+## Dev
+
+`npm start`
+
+## Build
+
+`npm run build`
+
+## To-Do
+
 - test unit (vue test utils + jest)
 - test fonctionnal (cypress)
 - generation de la doc (vuepress)
