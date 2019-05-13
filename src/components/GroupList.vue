@@ -16,7 +16,7 @@
         <td>
           <button @click="copy(item)">Copy</button>
         </td>
-        <td :class="'note' + item.note.replace('.', '')">{{item.note}}</td>
+        <td v-if="item.note" :class="'note' + item.note.replace('.', '')">{{item.note}}</td>
         <td class="artist">{{item.artist}}</td>
         <td>{{item.album}}</td>
         <td>{{item.releaseDate}}</td>
