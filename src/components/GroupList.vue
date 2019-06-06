@@ -1,8 +1,9 @@
 <template>
   <div class="Scrollable">
     <div class="content Scrollable__target">
-      <table>
-        <tr
+      <div class="releaseList">
+        <div
+          class="release"
           v-for="(item, id) in datas"
           :key="id"
           :class="[	
@@ -11,15 +12,15 @@
           {current: isCurrent(item.releaseDateRaw)}	
         ]"
         >
-          <td>
+          <div>
             <button @click="readed(item.id)">OK</button>
-          </td>
-          <td class="artist" @click="copy(item)">{{item.artist}}</td>
-          <td>{{item.album}}</td>
-          <td>{{item.releaseDate}}</td>
+          </div>
+          <div class="artist" @click="copy(item)">{{item.artist}}</div>
+          <div>{{item.album}}</div>
+          <div>{{item.releaseDate}}</div>
           <links :item="item"/>
-        </tr>
-      </table>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -90,6 +91,23 @@ export default {
   background: #00800021;
 }
 
+.releaseList {
+  max-width: 1100px;
+}
+
+.release {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 0.3fr auto;
+  padding: 5px 7px;
+  grid-gap: 10px;
+  align-items: center;
+  border-radius: 4px;
+
+  &:hover {
+    background: rgba(black, 0.2);
+  }
+}
+
 .artist {
   font-weight: 800;
   color: #fff;
@@ -114,7 +132,3 @@ export default {
   }
 }
 </style>
-
-
-
-
