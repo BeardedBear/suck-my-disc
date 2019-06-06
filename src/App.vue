@@ -21,6 +21,31 @@ export default {
 </script>
 
 <style lang="scss">
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 17px;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c93b57;
+  border: 5px solid transparent;
+  border-radius: 20px;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+
 html {
   font-family: "Nunito Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -55,6 +80,12 @@ button {
   padding: 30px;
 }
 
+#app {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
 .logo {
   padding: 0 40px;
   font-size: 1.4rem;
@@ -82,6 +113,19 @@ button {
   .router-link-exact-active,
   .router-link-active {
     background: #c93b57;
+  }
+}
+
+.Scrollable {
+  position: relative;
+
+  &__target {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
   }
 }
 </style>

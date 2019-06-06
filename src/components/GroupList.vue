@@ -1,28 +1,30 @@
 <template>
-  <div class="content">
-    <table>
-      <tr
-        v-for="(item, id) in datas"
-        :key="id"
-        :class="[	
+  <div class="Scrollable">
+    <div class="content Scrollable__target">
+      <table>
+        <tr
+          v-for="(item, id) in datas"
+          :key="id"
+          :class="[	
           {readed: isReaded(item.id)}, 	
           {futur: isFutur(item.releaseDateRaw)}, 	
           {current: isCurrent(item.releaseDateRaw)}	
         ]"
-      >
-        <td>
-          <button @click="readed(item.id)">OK</button>
-        </td>
-        <td>
-          <button @click="copy(item)">Copy</button>
-        </td>
-        <td v-if="item.note" :class="'note' + item.note.replace('.', '')">{{item.note}}</td>
-        <td class="artist">{{item.artist}}</td>
-        <td>{{item.album}}</td>
-        <td>{{item.releaseDate}}</td>
-        <links :item="item"/>
-      </tr>
-    </table>
+        >
+          <td>
+            <button @click="readed(item.id)">OK</button>
+          </td>
+          <td>
+            <button @click="copy(item)">Copy</button>
+          </td>
+          <td v-if="item.note" :class="'note' + item.note.replace('.', '')">{{item.note}}</td>
+          <td class="artist">{{item.artist}}</td>
+          <td>{{item.album}}</td>
+          <td>{{item.releaseDate}}</td>
+          <links :item="item"/>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 
