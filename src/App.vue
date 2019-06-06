@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="menu">
-      <span class="logo">SUCK MY DISC</span>
+      <img class="logo" src="logo.png" alt>
       <router-link class="menu__item" :to="{name: 'sputnik'}">Sputnik</router-link>
       <router-link class="menu__item" :to="{name: 'prp'}">The PRP</router-link>
     </div>
@@ -36,7 +36,7 @@ export default {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #c93b57;
+  background-color: rgba(white, 0.2);
   border: 5px solid transparent;
   border-radius: 20px;
   background-clip: content-box;
@@ -87,32 +87,40 @@ button {
 }
 
 .logo {
-  padding: 0 40px;
-  font-size: 1.4rem;
-  font-weight: bold;
+  height: 54px;
+  margin-right: 11px;
+  margin-left: 5px;
 }
 
 .menu {
   background-color: darken(#c93b57, 20);
-  padding: 10px;
+  // padding: 10px;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: flex-start;
+  align-items: center;
 
   &__item {
-    padding: 15px 35px;
+    padding: 25px;
     display: inline-block;
     text-decoration: none;
-    border-radius: 5px;
+    // border-radius: 5px;
     text-transform: uppercase;
     font-weight: 800;
     margin-right: 10px;
-    color: white;
+    // border-bottom: 5px solid rgba(255, 255, 255, 0);
+    color: #c93b57;
 
     &:hover {
-      background-color: darken(#c93b57, 25);
+      // border-bottom: 5px solid rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.5);
     }
   }
   .router-link-exact-active,
   .router-link-active {
-    background: #c93b57;
+    // background: #c93b57;
+    // border-color: #fff;
+    color: #fff;
   }
 }
 
