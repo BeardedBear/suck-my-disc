@@ -11,7 +11,7 @@
           @click.prevent="switchFilter(item)"
         >{{item.label}}</button>
 
-        <h1 class="genreTitle">Blues/Rock/Hard</h1>
+        <h1 class="genreTitle">Rock/Hard/Blues</h1>
         <button
           v-for="(item, id) in filtersRock"
           class="pageMenu__item"
@@ -23,6 +23,15 @@
         <h1 class="genreTitle">Punk/Hardcore</h1>
         <button
           v-for="(item, id) in filtersPunkHardcore"
+          class="pageMenu__item"
+          :key="id"
+          :class="{active: activeTab(item)}"
+          @click.prevent="switchFilter(item)"
+        >{{item.label}}</button>
+
+        <h1 class="genreTitle">Pop/Folk</h1>
+        <button
+          v-for="(item, id) in filtersPopFolk"
           class="pageMenu__item"
           :key="id"
           :class="{active: activeTab(item)}"
