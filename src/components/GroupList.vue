@@ -14,11 +14,7 @@
           <td>
             <button @click="readed(item.id)">OK</button>
           </td>
-          <td>
-            <button @click="copy(item)">Copy</button>
-          </td>
-          <td v-if="item.note" :class="'note' + item.note.replace('.', '')">{{item.note}}</td>
-          <td class="artist">{{item.artist}}</td>
+          <td class="artist" @click="copy(item)">{{item.artist}}</td>
           <td>{{item.album}}</td>
           <td>{{item.releaseDate}}</td>
           <links :item="item"/>
@@ -78,16 +74,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@for $i from 36 through 50 {
-  .note#{$i} {
-    background: hsla(100 * ($i/10 * 2), 50%, 40%, 1);
-    color: hsla(100 * ($i/10 * 2), 50%, 65%, 1);
-    padding: 0 10px;
-    border-radius: 4px;
-    font-weight: 800;
-  }
-}
-
 .readed {
   opacity: 0.2;
 
@@ -107,6 +93,25 @@ export default {
 .artist {
   font-weight: 800;
   color: #fff;
+  cursor: pointer;
+  transform-origin: 0%;
+  transition: transform ease 0.1s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    &::after {
+      content: "copié !";
+      background: #a72841;
+      font-size: 0.8rem;
+      border-radius: 10px;
+      padding: 0 10px 2px;
+      color: white;
+      margin-left: 7px;
+    }
+  }
 }
 </style>
 
