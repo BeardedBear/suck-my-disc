@@ -11,25 +11,6 @@
       <td>
         <a class="link" target="_BLANK" :href="'https://fr.wikipedia.org/wiki/' + item.artist">Wiki</a>
       </td>
-      <td>
-        <a
-          class="link"
-          target="_BLANK"
-          :href="'spotify:artist:'+item.artist+':album:'+item.album"
-        >Spotify</a>
-      </td>
-      <!-- <td>
-        <a
-          target="_BLANK"
-          :href="'https://rateyourmusic.com/artist/' + item.artist.toLowerCase().replace(' ', '-')"
-        >RYM -</a>
-      </td>
-      <td>
-        <a
-          target="_BLANK"
-          :href="'https://rateyourmusic.com/artist/' + item.artist.toLowerCase().replace(' ', '_')"
-        >RYM _</a>
-      </td>-->
     </tr>
   </td>
 </template>
