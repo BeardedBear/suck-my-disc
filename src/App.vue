@@ -52,12 +52,12 @@ html {
   -moz-osx-font-smoothing: grayscale;
   color: #a5a5a5;
   font-weight: 500;
-  background-color: #211e23;
+  background-color: #181b1a;
 }
 
 a {
   text-decoration: none;
-  color: #a72841;
+  color: #32b153;
 }
 
 button {
@@ -93,8 +93,7 @@ button {
 }
 
 .menu {
-  background-color: darken(#c93b57, 20);
-  // padding: 10px;
+  background-color: #252b28;
   display: grid;
   grid-auto-flow: column;
   justify-content: flex-start;
@@ -104,22 +103,17 @@ button {
     padding: 25px;
     display: inline-block;
     text-decoration: none;
-    // border-radius: 5px;
     text-transform: uppercase;
     font-weight: 800;
     margin-right: 10px;
-    // border-bottom: 5px solid rgba(255, 255, 255, 0);
-    color: #c93b57;
+    color: rgba(255, 255, 255, 0.3);
 
     &:hover {
-      // border-bottom: 5px solid rgba(255, 255, 255, 0.5);
       color: rgba(255, 255, 255, 0.5);
     }
   }
   .router-link-exact-active,
   .router-link-active {
-    // background: #c93b57;
-    // border-color: #fff;
     color: #fff;
   }
 }

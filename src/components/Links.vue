@@ -50,9 +50,13 @@ export default {
 <style lang="scss" scoped>
 .link {
   margin-left: 10px;
-  border-bottom: 1px solid rgba(#a72841, 0.5);
+  border-bottom: 1px solid rgba(#32b153, 0.5);
   display: inline-block;
 }
 </style>
+
+
+
+
 
 

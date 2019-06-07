@@ -122,7 +122,7 @@ export default {
   &:active {
     &::after {
       content: "copié !";
-      background: #a72841;
+      background: #32b153;
       font-size: 0.8rem;
       border-radius: 10px;
       padding: 0 10px 2px;
