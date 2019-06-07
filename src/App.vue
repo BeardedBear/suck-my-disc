@@ -52,7 +52,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   color: #a5a5a5;
   font-weight: 500;
-  background-color: #181b1a;
+  background-color: #0e0e0e;
 }
 
 a {
@@ -93,7 +93,7 @@ button {
 }
 
 .menu {
-  background-color: #252b28;
+  background-color: #191919;
   display: grid;
   grid-auto-flow: column;
   justify-content: flex-start;

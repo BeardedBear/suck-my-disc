@@ -2,6 +2,15 @@
   <div class="sputnikLayout">
     <div class="pageMenu Scrollable">
       <div class="Scrollable__target">
+        <h1 class="genreTitle">Global</h1>
+        <button
+          v-for="(item, id) in filtersGlobal"
+          class="pageMenu__item"
+          :key="id"
+          :class="{active: activeTab(item)}"
+          @click.prevent="switchFilter(item)"
+        >{{item.label}}</button>
+
         <h1 class="genreTitle">Metal</h1>
         <button
           v-for="(item, id) in filtersMetal"
@@ -74,6 +83,39 @@ export default {
   data: () => {
     return {
       filter: "0",
+      filtersGlobal: [
+        {
+          label: "All",
+          slot: "all",
+          param: "0"
+        },
+        {
+          label: "Metal",
+          slot: "metal",
+          param: "1"
+        },
+        {
+          label: "Blues",
+          slot: "blues",
+          param: "20"
+        },
+
+        {
+          label: "Rock",
+          slot: "rock",
+          param: "30"
+        },
+        {
+          label: "Punk",
+          slot: "punk",
+          param: "3"
+        },
+        {
+          label: "Pop",
+          slot: "pop",
+          param: "14"
+        }
+      ],
       filtersMetal: [
         {
           label: "Black",
@@ -106,11 +148,6 @@ export default {
           param: "82"
         },
         {
-          label: "Metal (Global)",
-          slot: "metal",
-          param: "1"
-        },
-        {
           label: "Metalcore",
           slot: "metalcore",
           param: "26"
@@ -136,7 +173,7 @@ export default {
           param: "40"
         },
         {
-          label: "Progressive",
+          label: "Progressive Metal",
           slot: "progressivemetal",
           param: "15"
         },
@@ -156,11 +193,6 @@ export default {
           label: "Alternative",
           slot: "alternative",
           param: "21"
-        },
-        {
-          label: "Blues (Global)",
-          slot: "blues",
-          param: "20"
         },
         {
           label: "Hard",
@@ -183,8 +215,8 @@ export default {
           param: "98"
         },
         {
-          label: "Pop",
-          slot: "pop",
+          label: "Pop Rock",
+          slot: "poprock",
           param: "54"
         },
         {
@@ -193,14 +225,9 @@ export default {
           param: "6"
         },
         {
-          label: "Progressive",
+          label: "Progressive Rock",
           slot: "progressiverock",
           param: "23"
-        },
-        {
-          label: "Rock (Global)",
-          slot: "rock",
-          param: "30"
         },
         {
           label: "Shoegaze",
@@ -238,19 +265,9 @@ export default {
           label: "Post Punk",
           slot: "postpunk",
           param: "52"
-        },
-        {
-          label: "Punk (Global)",
-          slot: "punk",
-          param: "3"
         }
       ],
       filtersPopFolk: [
-        {
-          label: "Pop (Global)",
-          slot: "pop",
-          param: "14"
-        },
         {
           label: "Dream Pop",
           slot: "dreampop",
@@ -273,11 +290,6 @@ export default {
         }
       ],
       filters: [
-        {
-          label: "All",
-          slot: "all",
-          param: "0"
-        },
         {
           label: "Electronic",
           slot: "electro",
