@@ -11,6 +11,13 @@
       <td>
         <a class="link" target="_BLANK" :href="'https://fr.wikipedia.org/wiki/' + item.artist">Wiki</a>
       </td>
+      <td>
+        <a
+          class="link"
+          target="_BLANK"
+          :href="'spotify:artist:'+item.artist+':album:'+item.album"
+        >Spotify</a>
+      </td>
       <!-- <td>
         <a
           target="_BLANK"
